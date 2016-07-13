@@ -20,5 +20,33 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    
+        void playMovie();
+        void stopMovie();
+        void pauseMovie();
+        void restartMovie();
+        void toggleTransport();
+    
+        ofVideoPlayer 		attractMovie;
+        ofVideoPlayer 		engageMovie;
+        ofVideoPlayer 		informMovie;
+        ofVideoPlayer 		currentMovie;
+    
+        enum Transport_Status {
+            STATUS_PLAYING,
+            STATUS_STOPPED
+        };
+    
+        Transport_Status status;
+    
+        enum Interaction_Mode {
+            MODE_ATTRACT,
+            MODE_ENGAGE,
+            MODE_INFORM
+        };
+    
+        Interaction_Mode mode;
+    
+        void switchMovie(Interaction_Mode newMode);
 		
 };
