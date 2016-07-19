@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 
+using namespace std;
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -21,32 +23,29 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
+    private:
         void playMovie();
         void stopMovie();
         void pauseMovie();
+        void nextMovie();
+        void prevMovie();
         void restartMovie();
         void toggleTransport();
-    
-        ofVideoPlayer 		attractMovie;
-        ofVideoPlayer 		engageMovie;
-        ofVideoPlayer 		informMovie;
-        ofVideoPlayer 		currentMovie;
-    
+        
+        ofVideoPlayer 		movie;
+
         enum Transport_Status {
             STATUS_PLAYING,
             STATUS_STOPPED
         };
-    
+        
         Transport_Status status;
     
-        enum Interaction_Mode {
-            MODE_ATTRACT,
-            MODE_ENGAGE,
-            MODE_INFORM
-        };
+        vector<string> Interaction_Mode;
     
-        Interaction_Mode mode;
+        string mode;
     
-        void switchMovie(Interaction_Mode newMode);
-		
+        void switchMovie(string newMode);
+    
+    
 };

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D117AC311D38353500FAA3AE /* frogUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D117AC301D38353500FAA3AE /* frogUtils.cpp */; };
 		D18218EA1D36EDED00F13D52 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D18218E91D36EDED00F13D52 /* README.md */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -43,6 +44,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D117AC2E1D38351600FAA3AE /* frogUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frogUtils.h; sourceTree = "<group>"; };
+		D117AC301D38353500FAA3AE /* frogUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = frogUtils.cpp; sourceTree = "<group>"; };
 		D18218E91D36EDED00F13D52 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D18218EB1D36EEA300F13D52 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../_platform/open_frameworks/of_v0.9.3_osx_release/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -110,6 +113,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				D117AC2E1D38351600FAA3AE /* frogUtils.h */,
+				D117AC301D38353500FAA3AE /* frogUtils.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -211,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D18218EA1D36EDED00F13D52 /* README.md in Sources */,
+				D117AC311D38353500FAA3AE /* frogUtils.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 			);

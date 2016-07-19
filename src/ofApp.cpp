@@ -1,72 +1,123 @@
 #include "ofApp.h"
+#include "frogUtils.h"
+
+using namespace std;
+
+//----------------------- Constants ------------------------
+
+//static const std::string ofApp::Interaction_Mode_Names[] = { "attract", "engage", "inform" };
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofLog(OF_LOG_NOTICE, "ofApp::setup");
     
-    mode = MODE_ATTRACT;
+    // setup the modes will abstract this to a plist
+    this->Interaction_Mode.push_back("attract");
+    this->Interaction_Mode.push_back("engage");
+    this->Interaction_Mode.push_back("inform");
+    
+    
+    mode = this->Interaction_Mode[0];
     
     ofBackground(255,255,255);
     ofSetVerticalSync(true);
-    attractMovie.load("movies/attract.mov");
-    attractMovie.setLoopState(OF_LOOP_NORMAL);
-    currentMovie = attractMovie;
+    movie.load("movies/attract.mov");
+    movie.setLoopState(OF_LOOP_NORMAL);
     playMovie();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    currentMovie.update();
+    movie.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofSetHexColor(0xFFFFFF);
-    currentMovie.draw(0,0);
+    movie.draw(0,0);
     ofSetHexColor(0x000000);
-    ofPixels & pixels = attractMovie.getPixels();
+    ofPixels & pixels = movie.getPixels();
     
     int vidWidth = pixels.getWidth();
     int vidHeight = pixels.getHeight();
     int nChannels = pixels.getNumChannels();
     
-    if(currentMovie.getIsMovieDone()){
+    if(movie.getIsMovieDone()){
         ofSetHexColor(0xFF0000);
         ofDrawBitmapString("end of attract movie",20,440);
     }
 
 }
 
-//---------------------- TRANSPORT CONTROL ---------------------
+//----------------------- MOVIE CONTROL ------------------------
 
-void ofApp::switchMovie(Interaction_Mode newMode) {
-    currentMovie.load("mov");
+void ofApp::switchMovie(string newMode) {
+    movie.load("movies/" + newMode + ".mov");
+    movie.play();
 }
 
 //---------------------- TRANSPORT CONTROL ---------------------
 
 void ofApp::playMovie() {
     ofLog(OF_LOG_NOTICE, "PLAY");
-    currentMovie.play();
+    movie.play();
     status = STATUS_PLAYING;
 }
 
 void ofApp::stopMovie() {
     ofLog(OF_LOG_NOTICE, "STOP");
-    currentMovie.stop();
+    movie.stop();
     status = STATUS_STOPPED;
 }
 
 void ofApp::pauseMovie() {
     ofLog(OF_LOG_NOTICE, "PAUSE");
-    currentMovie.setPaused(true);
+    movie.setPaused(true);
     status = STATUS_STOPPED;
 }
 
 void ofApp::restartMovie() {
     ofLog(OF_LOG_NOTICE, "RESTART");
-    currentMovie.setPaused(true);
+    movie.setPaused(true);
     status = STATUS_STOPPED;
+}
+
+void ofApp::prevMovie() {
+    
+    int nextMode;
+    int pos = frogUtils::getVectorValuePosition(this->Interaction_Mode, mode);
+    
+    if ( pos > 0 ) {
+        ofLog(OF_LOG_NOTICE, "ONE LOWER");
+        nextMode = pos - 1;
+    } else {
+        ofLog(OF_LOG_NOTICE, "LAST ONE");
+        nextMode = (this->Interaction_Mode.size() - 1);
+    }
+    
+    mode = this->Interaction_Mode[nextMode];
+    
+    switchMovie( this->Interaction_Mode[nextMode] );
+    
+}
+
+void ofApp::nextMovie() {
+    
+    int nextMode;
+    int pos = frogUtils::getVectorValuePosition(this->Interaction_Mode, mode);
+    
+    if ( pos < (this->Interaction_Mode.size() - 1) ) {
+        ofLog(OF_LOG_NOTICE, "LESS THAN");
+        nextMode = pos + 1;
+    } else {
+        ofLog(OF_LOG_NOTICE, "GREATER THAN");
+        nextMode = 0;
+    }
+    
+    mode = this->Interaction_Mode[nextMode];
+    
+    switchMovie( this->Interaction_Mode[nextMode] );
+
 }
 
 void ofApp::toggleTransport() {
@@ -83,6 +134,10 @@ void ofApp::keyPressed(int key){
     ofLog(OF_LOG_NOTICE, "KEY INTERACTION " + ofToString(key));
     if (key == 32) {
         toggleTransport();
+    } else if (key == 44) {
+        prevMovie();
+    } else if (key == 46) {
+        nextMovie();
     }
 }
 
