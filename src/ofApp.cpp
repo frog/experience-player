@@ -11,11 +11,24 @@ using namespace std;
 void ofApp::setup(){
     ofLog(OF_LOG_NOTICE, "ofApp::setup");
     
+    //-----------
+    //the string is printed at the top of the app
+    //to give the user some feedback
+    message = "loading mySettings.xml";
+    
+    //we load our settings file
+    //if it doesn't exist we can still make one
+    //by hitting the 's' key
+    if( XML.loadFile("frogPlayerSettings.xml") ){
+        message = "mySettings.xml loaded!";
+    }else{
+        message = "unable to load mySettings.xml check data/ folder";
+    }
+    
     // setup the modes will abstract this to a plist
     this->Interaction_Mode.push_back("attract");
     this->Interaction_Mode.push_back("engage");
     this->Interaction_Mode.push_back("inform");
-    
     
     mode = this->Interaction_Mode[0];
     
@@ -92,7 +105,7 @@ void ofApp::prevMovie() {
         prevMovie = pos - 1;
     } else {
         ofLog(OF_LOG_NOTICE, "LAST ONE");
-        prevMovie = (this->Interaction_Mode.size() - 1);
+        prevMovie = ( this->Interaction_Mode.size() - 1 );
     }
     
     mode = this->Interaction_Mode[prevMovie];
