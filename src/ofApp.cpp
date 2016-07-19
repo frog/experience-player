@@ -84,39 +84,39 @@ void ofApp::restartMovie() {
 
 void ofApp::prevMovie() {
     
-    int nextMode;
+    int prevMovie;
     int pos = frogUtils::getVectorValuePosition(this->Interaction_Mode, mode);
     
     if ( pos > 0 ) {
         ofLog(OF_LOG_NOTICE, "ONE LOWER");
-        nextMode = pos - 1;
+        prevMovie = pos - 1;
     } else {
         ofLog(OF_LOG_NOTICE, "LAST ONE");
-        nextMode = (this->Interaction_Mode.size() - 1);
+        prevMovie = (this->Interaction_Mode.size() - 1);
     }
     
-    mode = this->Interaction_Mode[nextMode];
+    mode = this->Interaction_Mode[prevMovie];
     
-    switchMovie( this->Interaction_Mode[nextMode] );
+    switchMovie( this->Interaction_Mode[prevMovie] );
     
 }
 
 void ofApp::nextMovie() {
     
-    int nextMode;
+    int nextMovie;
     int pos = frogUtils::getVectorValuePosition(this->Interaction_Mode, mode);
     
     if ( pos < (this->Interaction_Mode.size() - 1) ) {
         ofLog(OF_LOG_NOTICE, "LESS THAN");
-        nextMode = pos + 1;
+        nextMovie = pos + 1;
     } else {
         ofLog(OF_LOG_NOTICE, "GREATER THAN");
-        nextMode = 0;
+        nextMovie = 0;
     }
     
-    mode = this->Interaction_Mode[nextMode];
+    mode = this->Interaction_Mode[nextMovie];
     
-    switchMovie( this->Interaction_Mode[nextMode] );
+    switchMovie( this->Interaction_Mode[nextMovie] );
 
 }
 
