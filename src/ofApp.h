@@ -1,12 +1,15 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxXmlSettings.h"
 
 using namespace std;
 
 class ofApp : public ofBaseApp{
 
 	public:
+        ofApp();
+        ~ofApp();
 		void setup();
 		void update();
 		void draw();
@@ -22,6 +25,11 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    
+    
+        ofxXmlSettings XML;
+        string xmlStructure;
+        string message;
     
     private:
         void playMovie();

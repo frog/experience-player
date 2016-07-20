@@ -1,29 +1,52 @@
 #include "ofApp.h"
 #include "frogUtils.h"
 
+
 using namespace std;
 
 //----------------------- Constants ------------------------
 
 //static const std::string ofApp::Interaction_Mode_Names[] = { "attract", "engage", "inform" };
 
+ofApp::ofApp(){
+    
+}
+
+ofApp::~ofApp(){
+
+}
+
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofLog(OF_LOG_NOTICE, "ofApp::setup");
     
-    // setup the modes will abstract this to a plist
-    this->Interaction_Mode.push_back("attract");
-    this->Interaction_Mode.push_back("engage");
-    this->Interaction_Mode.push_back("inform");
+    TiXmlDocument doc( "/Users/sonny.king/Files/_projects/frogPlayer/bin/data/frogPlayerSettings.xml" );
+    bool loaded = doc.LoadFile();
+    
+    if (loaded) {
+        ofLog(OF_LOG_NOTICE, "SETTINGS LOADED");
+        
+        TiXmlHandle docHandle(&doc);
+        TiXmlElement* movie = docHandle.FirstChild( "settings" ).FirstChild( "movies" ).FirstChild( "movie" ).ToElement();
+        
+        for( movie; movie; movie=movie->NextSiblingElement() ) {
+            ofLog(OF_LOG_NOTICE, "READ MOVIE: " + ofToString(movie->GetText()));
+            this->Interaction_Mode.push_back(ofToString(movie->GetText()));
+        }
+        
+    } else {
+        ofLog(OF_LOG_NOTICE, "SETTINGS FAILED TO LOAD");
+    }
     
     
     mode = this->Interaction_Mode[0];
     
     ofBackground(255,255,255);
     ofSetVerticalSync(true);
-    movie.load("movies/attract.mov");
+    
     movie.setLoopState(OF_LOOP_NORMAL);
-    playMovie();
+    switchMovie(this->Interaction_Mode[0]);
 }
 
 //--------------------------------------------------------------
@@ -92,7 +115,7 @@ void ofApp::prevMovie() {
         prevMovie = pos - 1;
     } else {
         ofLog(OF_LOG_NOTICE, "LAST ONE");
-        prevMovie = (this->Interaction_Mode.size() - 1);
+        prevMovie = ( this->Interaction_Mode.size() - 1 );
     }
     
     mode = this->Interaction_Mode[prevMovie];

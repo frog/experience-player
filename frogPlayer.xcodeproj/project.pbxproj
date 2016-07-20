@@ -8,10 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		D117AC311D38353500FAA3AE /* frogUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D117AC301D38353500FAA3AE /* frogUtils.cpp */; };
+		D158689E1D401C6A00D754F1 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19355561D3ED4740094C96A /* ofxXmlSettings.cpp */; };
+		D158689F1D401C6E00D754F1 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D193555A1D3ED4A10094C96A /* tinyxmlparser.cpp */; };
+		D15868A01D401C7100D754F1 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19355591D3ED4A10094C96A /* tinyxmlerror.cpp */; };
+		D15868A11D401C7400D754F1 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19355581D3ED4A10094C96A /* tinyxml.cpp */; };
+		D15868A51D401F7F00D754F1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868A41D401F7F00D754F1 /* IOKit.framework */; };
+		D15868A71D401F8500D754F1 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868A61D401F8500D754F1 /* QTKit.framework */; };
+		D15868AF1D40200500D754F1 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868A81D40200500D754F1 /* Accelerate.framework */; };
+		D15868B01D40200500D754F1 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868A91D40200500D754F1 /* AGL.framework */; };
+		D15868B11D40200500D754F1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868AA1D40200500D754F1 /* AppKit.framework */; };
+		D15868B21D40200500D754F1 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868AB1D40200500D754F1 /* ApplicationServices.framework */; };
+		D15868B31D40200500D754F1 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868AC1D40200500D754F1 /* CoreAudio.framework */; };
+		D15868B41D40200500D754F1 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868AD1D40200500D754F1 /* CoreFoundation.framework */; };
+		D15868B51D40200500D754F1 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868AE1D40200500D754F1 /* CoreServices.framework */; };
+		D15868B91D40201C00D754F1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868B61D40201C00D754F1 /* Cocoa.framework */; };
+		D15868BA1D40201C00D754F1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868B71D40201C00D754F1 /* CoreVideo.framework */; };
+		D15868BB1D40201C00D754F1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15868B81D40201C00D754F1 /* OpenGL.framework */; };
+		D15868BC1D40218200D754F1 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 		D18218EA1D36EDED00F13D52 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D18218E91D36EDED00F13D52 /* README.md */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
-		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +62,25 @@
 /* Begin PBXFileReference section */
 		D117AC2E1D38351600FAA3AE /* frogUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frogUtils.h; sourceTree = "<group>"; };
 		D117AC301D38353500FAA3AE /* frogUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = frogUtils.cpp; sourceTree = "<group>"; };
+		D15868A41D401F7F00D754F1 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		D15868A61D401F8500D754F1 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
+		D15868A81D40200500D754F1 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		D15868A91D40200500D754F1 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = System/Library/Frameworks/AGL.framework; sourceTree = SDKROOT; };
+		D15868AA1D40200500D754F1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D15868AB1D40200500D754F1 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		D15868AC1D40200500D754F1 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		D15868AD1D40200500D754F1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		D15868AE1D40200500D754F1 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		D15868B61D40201C00D754F1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D15868B71D40201C00D754F1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D15868B81D40201C00D754F1 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		D18218E91D36EDED00F13D52 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D18218EB1D36EEA300F13D52 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D19355531D3EBE140094C96A /* ofxXmlSettings */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ofxXmlSettings; path = ../../_platform/open_frameworks/of_v0.9.3_osx_release/addons/ofxXmlSettings; sourceTree = "<group>"; };
+		D19355561D3ED4740094C96A /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxXmlSettings.cpp; path = ../../_platform/open_frameworks/of_v0.9.3_osx_release/addons/ofxXmlSettings/src/ofxXmlSettings.cpp; sourceTree = "<group>"; };
+		D19355581D3ED4A10094C96A /* tinyxml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxml.cpp; path = ../../_platform/open_frameworks/of_v0.9.3_osx_release/addons/ofxXmlSettings/libs/tinyxml.cpp; sourceTree = "<group>"; };
+		D19355591D3ED4A10094C96A /* tinyxmlerror.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxmlerror.cpp; path = ../../_platform/open_frameworks/of_v0.9.3_osx_release/addons/ofxXmlSettings/libs/tinyxmlerror.cpp; sourceTree = "<group>"; };
+		D193555A1D3ED4A10094C96A /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxmlparser.cpp; path = ../../_platform/open_frameworks/of_v0.9.3_osx_release/addons/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../_platform/open_frameworks/of_v0.9.3_osx_release/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* frogPlayerDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frogPlayerDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
@@ -63,6 +96,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D15868B91D40201C00D754F1 /* Cocoa.framework in Frameworks */,
+				D15868BA1D40201C00D754F1 /* CoreVideo.framework in Frameworks */,
+				D15868BB1D40201C00D754F1 /* OpenGL.framework in Frameworks */,
+				D15868AF1D40200500D754F1 /* Accelerate.framework in Frameworks */,
+				D15868B01D40200500D754F1 /* AGL.framework in Frameworks */,
+				D15868B11D40200500D754F1 /* AppKit.framework in Frameworks */,
+				D15868B21D40200500D754F1 /* ApplicationServices.framework in Frameworks */,
+				D15868B31D40200500D754F1 /* CoreAudio.framework in Frameworks */,
+				D15868B41D40200500D754F1 /* CoreFoundation.framework in Frameworks */,
+				D15868B51D40200500D754F1 /* CoreServices.framework in Frameworks */,
+				D15868A71D401F8500D754F1 /* QTKit.framework in Frameworks */,
+				D15868A51D401F7F00D754F1 /* IOKit.framework in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,6 +125,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				D19355531D3EBE140094C96A /* ofxXmlSettings */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -95,6 +141,22 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				D15868B61D40201C00D754F1 /* Cocoa.framework */,
+				D15868B71D40201C00D754F1 /* CoreVideo.framework */,
+				D15868B81D40201C00D754F1 /* OpenGL.framework */,
+				D15868A81D40200500D754F1 /* Accelerate.framework */,
+				D15868A91D40200500D754F1 /* AGL.framework */,
+				D15868AA1D40200500D754F1 /* AppKit.framework */,
+				D15868AB1D40200500D754F1 /* ApplicationServices.framework */,
+				D15868AC1D40200500D754F1 /* CoreAudio.framework */,
+				D15868AD1D40200500D754F1 /* CoreFoundation.framework */,
+				D15868AE1D40200500D754F1 /* CoreServices.framework */,
+				D15868A61D401F8500D754F1 /* QTKit.framework */,
+				D15868A41D401F7F00D754F1 /* IOKit.framework */,
+				D19355581D3ED4A10094C96A /* tinyxml.cpp */,
+				D19355591D3ED4A10094C96A /* tinyxmlerror.cpp */,
+				D193555A1D3ED4A10094C96A /* tinyxmlparser.cpp */,
+				D19355561D3ED4740094C96A /* ofxXmlSettings.cpp */,
 				D18218EB1D36EEA300F13D52 /* .gitignore */,
 				D18218E91D36EDED00F13D52 /* README.md */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
@@ -215,10 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D15868BC1D40218200D754F1 /* ofApp.cpp in Sources */,
+				D15868A11D401C7400D754F1 /* tinyxml.cpp in Sources */,
+				D15868A01D401C7100D754F1 /* tinyxmlerror.cpp in Sources */,
+				D158689F1D401C6E00D754F1 /* tinyxmlparser.cpp in Sources */,
+				D158689E1D401C6A00D754F1 /* ofxXmlSettings.cpp in Sources */,
 				D18218EA1D36EDED00F13D52 /* README.md in Sources */,
 				D117AC311D38353500FAA3AE /* frogUtils.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -305,12 +372,19 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					../../_platform/open_frameworks/of_v0.9.3_osx_release/addons/ofxXmlSettings/src,
+					../../_platform/open_frameworks/of_v0.9.3_osx_release/addons/ofxXmlSettings/libs,
+				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -319,6 +393,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -328,12 +403,19 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../_platform/open_frameworks/of_v0.9.3_osx_release/libs/glut/lib/osx\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					../../_platform/open_frameworks/of_v0.9.3_osx_release/addons/ofxXmlSettings/src,
+					../../_platform/open_frameworks/of_v0.9.3_osx_release/addons/ofxXmlSettings/libs,
+				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "x86_64 i386";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};

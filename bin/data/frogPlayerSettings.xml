@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<settings>
+    <movies>
+        <movie loop="true">attract</movie>
+        <movie loop="false">engage</movie>
+        <movie loop="false">inform</movie>
+    </movies>
+</settings>
