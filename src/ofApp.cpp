@@ -39,7 +39,6 @@ void ofApp::setup(){
         ofLog(OF_LOG_NOTICE, "SETTINGS FAILED TO LOAD");
     }
     
-    
     mode = this->Interaction_Mode[0];
     
     ofBackground(255,255,255);
