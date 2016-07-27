@@ -81,8 +81,8 @@ I set that one to:
 (this step has to happen on the command line)
 Set two environment variables.
 
-    export PREVIOUS=..\/..\/_platform\/open_frameworks\/of_v0.9.3_osx_release
-    export NEW=..\/of_v0.9.3_osx_release
+    export PREVIOUS="..\/..\/_platform\/open_frameworks\/of_v0.9.3_osx_release"
+    export NEW="..\/of_v0.9.3_osx_release"
 
 Now you're going to run a regex on the project file:
 
