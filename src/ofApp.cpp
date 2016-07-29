@@ -20,8 +20,13 @@ ofApp::~ofApp(){
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofLog(OF_LOG_NOTICE, "ofApp::setup");
-    
-    
+ 
+    int baud = 9600;
+    serial.setup("/dev/tty.usbserial-AD026B1Q", baud);
+    serial.flush();
+    cout << "SERIAL AVAILABLE?: " << serial.available() << "\n";    
+    cout << "TIME: " << ofGetElapsedTimeMillis() << "\n";  
+
     #ifdef TARGET_OSX
         ofLog(OF_LOG_NOTICE, "SET APPLICATION PATH");
         // Get the absolute location of the executable file in the bundle.
@@ -77,9 +82,57 @@ void ofApp::setup(){
     switchMovie(this->Interaction_Mode[0]);
 }
 
+
+bool finishedReading = true;
+
 //--------------------------------------------------------------
 void ofApp::update(){
     movie.update();
+
+    if ( serial.available() > 3 && finishedReading ) {
+        finishedReading = false;
+        readArduinoSerial();
+    }
+}
+
+void ofApp::readArduinoSerial(){   
+    static string str;
+    stringstream ss;
+    char ch;
+    int ttl = 1000;
+
+    while ((ch=serial.readByte())>0 && ttl>0 && ch!='\n') {
+        ss << ch;
+    }
+
+    str+=ss.str();
+
+    if (ch == '\n') {
+
+        string tmp=str;
+        str="";
+
+        int idling = tmp.find("idle");
+        int passing = tmp.find("passing");
+        int dwelling = tmp.find("dwell");
+
+        cout << "STRING: " << tmp <<"\n";
+        if ( idling >= 0 ) {
+            cout << "IDLING " << idling <<"\n";
+            nextMovie();
+        }
+
+        if ( passing >= 0 ) {
+            cout << "PASSING " << passing <<"\n";
+        }
+
+        if ( dwelling >= 0 ) {
+            cout << "DWELLING " << dwelling <<"\n";
+            nextMovie();
+        }
+    }
+
+    finishedReading = true;
 }
 
 //--------------------------------------------------------------
@@ -183,10 +236,13 @@ void ofApp::toggleTransport() {
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     ofLog(OF_LOG_NOTICE, "KEY INTERACTION " + ofToString(key));
+    //space bar
     if (key == 32) {
         toggleTransport();
+    //, character
     } else if (key == 44) {
         prevMovie();
+    //. character    
     } else if (key == 46) {
         nextMovie();
     }
