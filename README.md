@@ -47,7 +47,7 @@ ll /dev/tty.*
 ###How to fix your build
 
 
-####Step 1:  Identify the previous user's open frameworks path. **  
+####Step 1:  Identify the previous user's open frameworks path.
 
 That's a required piece of information to make this work quickly.
 
