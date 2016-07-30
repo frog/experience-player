@@ -5,6 +5,8 @@ Installation Player
 
 Open Frameworks 0.9.3
 
+The [Multiple Ultrasound Sensor - Arduino Breadboard](https://gitus.frogdesign.com/projects/SFTECH/repos/installation-video-arduino-sensor/browse) to detect proximity and trigger video changes.
+
 # Setup
 
 Change the header file path in Project.xconfig:
@@ -22,6 +24,17 @@ Add "addon" source files ot your Compile Sources:
             Repeat for all required addons; ofxXmlSettings
 
 
+Make sure that the serial port is correct in the `ofApp::setup()` of the `ofApp.cpp` file.
+
+```
+serial.setup("/dev/tty.usbserial-AD026B1Q", baud);
+```
+
+In order to look up FTDI port address run the following command:
+
+```
+ll /dev/tty.*
+```
 
 ---
 
