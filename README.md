@@ -1,13 +1,12 @@
-Installation Player
--------------------
+#Installation Player
 
-# Requirements
+##Requirements
 
 Open Frameworks 0.9.3
 
 The [Multiple Ultrasound Sensor - Arduino Breadboard](https://gitus.frogdesign.com/projects/SFTECH/repos/installation-video-arduino-sensor/browse) to detect proximity and trigger video changes.
 
-# Setup
+##Setup
 
 Change the header file path in Project.xconfig:
 
@@ -43,12 +42,12 @@ ll /dev/tty.*
 
 ---
 
-## Troubleshooting ##
+##Troubleshooting
 
-### How to fix your build ###
+###How to fix your build
 
 
-** Step 1:  Identify the previous user's open frameworks path. **  
+####Step 1:  Identify the previous user's open frameworks path. **  
 
 That's a required piece of information to make this work quickly.
 
@@ -75,7 +74,7 @@ frogPlayer.xcodeproj/project.pbxproj
 
 (instructions below)
 
-** Step 2: Project.xcconfig **
+####Step 2: Project.xcconfig
 
 Open _Project.xcconfig_ in your favorite text editor.
 
@@ -103,7 +102,7 @@ I set that one to:
     
 (pretty much the same deal, use my path and not the one that's already there).
 
-** Step 3: The XCode Project ** 
+####Step 3: The XCode Project
 
 (this step has to happen on the command line)
 Set two environment variables.
