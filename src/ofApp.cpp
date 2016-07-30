@@ -22,6 +22,11 @@ void ofApp::setup(){
     ofLog(OF_LOG_NOTICE, "ofApp::setup");
  
     int baud = 9600;
+    sensorStatus = "idle";
+    sensorStatusChange = false;
+
+    //TODO - change the port to the arduino one
+    // from your terminal run: ll /dev/tty.*
     serial.setup("/dev/tty.usbserial-AD026B1Q", baud);
     serial.flush();
     cout << "SERIAL AVAILABLE?: " << serial.available() << "\n";    
@@ -78,8 +83,9 @@ void ofApp::setup(){
     ofBackground(255,255,255);
     ofSetVerticalSync(true);
     
-    movie.setLoopState(OF_LOOP_NORMAL);
+    // movie.setLoopState(OF_LOOP_NONE);
     switchMovie(this->Interaction_Mode[0]);
+    movie.setLoopState(OF_LOOP_NORMAL);
 }
 
 
@@ -90,6 +96,7 @@ void ofApp::update(){
     movie.update();
 
     if ( serial.available() > 3 && finishedReading ) {
+        cout << "SERIAL AVAILABLE: " << "\n";  
         finishedReading = false;
         readArduinoSerial();
     }
@@ -116,39 +123,122 @@ void ofApp::readArduinoSerial(){
         int passing = tmp.find("passing");
         int dwelling = tmp.find("dwell");
 
-        cout << "STRING: " << tmp <<"\n";
+        // cout << "STRING: " << tmp <<"\n";
         if ( idling >= 0 ) {
-            cout << "IDLING " << idling <<"\n";
-            nextMovie();
+            if ( sensorStatus != "idle" ) {
+                sensorStatusChange = true;
+                sensorStatus = "idle";
+            }
+            // cout << "IDLING " << idling <<"\n";
         }
 
         if ( passing >= 0 ) {
-            cout << "PASSING " << passing <<"\n";
+            if ( sensorStatus != "passing" ) {
+                sensorStatusChange = true;
+                sensorStatus = "passing";
+            }
+            // cout << "PASSING " << passing <<"\n";
         }
 
         if ( dwelling >= 0 ) {
-            cout << "DWELLING " << dwelling <<"\n";
-            nextMovie();
+            if ( sensorStatus != "dwell" ) {
+                sensorStatusChange = true;
+                sensorStatus = "dwell";
+            }
+            // cout << "DWELLING " << dwelling <<"\n";
         }
     }
 
     finishedReading = true;
 }
 
+
+void ofApp::sensorVideoSwitch(){
+
+
+    cout << "----------- \n";
+    cout << "SVS - SENSOR: " << sensorStatus << " - VECTOR: "<< mode << " - INDEX " << frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) << "\n";
+    // cout << "VECTOR INDEX " << frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) << "\n";
+
+    if ( sensorStatus == "idle" ) {
+        // cout << "SVS IF IDLE \n";
+        movie.setLoopState(OF_LOOP_NORMAL);
+        // if movie 0 do nothing
+        // if movie is 1 or 2 > go back to 0 and turn repeat on
+        if ( frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) == 1 ) {
+            // cout << "SVS IF IDLE 1 \n"; 
+            prevMovie();
+            // switchMovie( this->Interaction_Mode[0]);  
+        } else if ( frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) == 2 ) {
+            // cout << "SVS IF IDLE 2 \n"; 
+            nextMovie();
+        }
+
+    } else if ( sensorStatus == "dwell" ) {
+        // cout << "SVS IF DWELL " << sensorStatus << "\n";
+        // turn of repeat
+        // if movie 0 go to 1
+        // if movie 1 go to 2
+
+        if ( frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) == 0 ) {
+            // cout << "SVS IF DWELL 0 \n";
+            nextMovie();
+            // movie.setLoopState(OF_LOOP_NONE);
+        } else if ( frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) == 1 ) {
+            // cout << "SVS IF DWELL 1 \n";
+            // nextMovie();
+            // movie.setLoopState(OF_LOOP_NONE);
+        } else if ( frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) == 2 ) {
+            // cout << "SVS IF DWELL 2 \n";
+            // prevMovie();
+            // movie.setLoopState(OF_LOOP_NONE);
+        }
+
+    }
+}
+
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofSetHexColor(0xFFFFFF);
-    movie.draw(0,0);
-    ofSetHexColor(0x000000);
-    ofPixels & pixels = movie.getPixels();
+    ofRectangle screenRect(0, 0, ofGetWidth(), ofGetHeight());
+    ofRectangle videoRect(0, 0, movie.getWidth(), movie.getHeight());
+    ofRectangle videoFullscreenRect = videoRect;
+    videoFullscreenRect.scaleTo(screenRect, OF_ASPECT_RATIO_KEEP_BY_EXPANDING);
     
-    int vidWidth = pixels.getWidth();
-    int vidHeight = pixels.getHeight();
-    int nChannels = pixels.getNumChannels();
-    
+    movie.draw(videoFullscreenRect);
+
+
+    if ( sensorStatusChange ) {
+        sensorStatusChange = false;
+        sensorVideoSwitch();
+    }
+
+    // cout << "SENSOR Mode " << sensorStatus << "\n";
+    // cout << "VECTOR Mode " << mode << "\n";
+    // cout << "VECTOR VALUE POSITION " << frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) << "\n";
+
     if(movie.getIsMovieDone()){
-        ofSetHexColor(0xFF0000);
-        ofDrawBitmapString("end of attract movie",20,440);
+        // cout << "MOVIE IS DONE " << sensorStatus << "\n";
+        // check which mode player is on
+        // if it is on mode 'engage' index 1
+        // move back to 'attract' index 0
+        if ( sensorStatus == "dwell" ) {
+            // cout << "SVS IF DWELL " << sensorStatus << "\n";
+            if ( frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) == 0 ) {
+                cout << "GIMD 0 \n";
+                // cout << "SVS IF DWELL 0 \n";
+                nextMovie();
+                // movie.setLoopState(OF_LOOP_NONE);
+            } else if ( frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) == 1 ) {
+                cout << "GIMD 1 \n";
+                // nextMovie();
+                // movie.setLoopState(OF_LOOP_NONE);
+            } else if ( frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) == 2 ) {
+                cout << "GIMD 2 \n";
+                // prevMovie();
+                // movie.setLoopState(OF_LOOP_NONE);
+            }
+
+        }
     }
 
 }

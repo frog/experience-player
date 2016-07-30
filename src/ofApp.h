@@ -11,6 +11,7 @@ class ofApp : public ofBaseApp{
         ofApp();
         ~ofApp();
         void readArduinoSerial();
+        void sensorVideoSwitch();
         void setup();
         void update();
         void draw();
@@ -53,6 +54,8 @@ class ofApp : public ofBaseApp{
         vector<string> Interaction_Mode;
     
         string mode;
+        string sensorStatus;
+        bool sensorStatusChange;
     
         void switchMovie(string newMode);
     
