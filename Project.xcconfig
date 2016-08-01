@@ -3,9 +3,9 @@
 OF_PATH = ../../_platform/open_frameworks/of_v0.9.3_osx_release
 
 //THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
-#include "/Users/jules.moretti/Files/_platform/open_frameworks/of_v0.9.3_osx_release/libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
+#include "/Users/jules/Files/_platform/open_frameworks/of_v0.9.3_osx_release/libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
 
-//ICONS - NEW IN 0072 
+//ICONS - NEW IN 0072
 ICON_NAME_DEBUG = icon-debug.icns
 ICON_NAME_RELEASE = icon.icns
 ICON_FILE_PATH = $(OF_PATH)/libs/openFrameworksCompiled/project/osx/
