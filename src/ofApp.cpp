@@ -16,6 +16,9 @@ ofApp::~ofApp(){
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    logger = new FrogLogger("ec2-52-53-209-107.us-west-1.compute.amazonaws.com",100);
+    logger->log("started app");
+    
 	ofLog(OF_LOG_NOTICE, "ofApp::setup");
 
 	int baud = 9600;

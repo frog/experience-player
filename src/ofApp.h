@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
+#include "froglogger.h"
 
 using namespace std;
 
@@ -69,4 +70,6 @@ class ofApp : public ofBaseApp{
 		float percentage;
 
 		void switchMovie(string newMode);
+    
+        FrogLogger* logger;
 };

@@ -1,0 +1,3 @@
+[submodule "frog-log"]
+	path = frog-log
+	url = ssh://git@gitus.frogdesign.com:7999/sftech/frog-log.git
