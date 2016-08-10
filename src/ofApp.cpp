@@ -16,9 +16,9 @@ ofApp::~ofApp(){
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    logger = new FrogLogger("ec2-52-53-209-107.us-west-1.compute.amazonaws.com",100);
-    logger->log("started app");
-    
+		logger = new FrogLogger("ec2-52-53-209-107.us-west-1.compute.amazonaws.com",100);
+		logger->log("started app");
+
 	ofLog(OF_LOG_NOTICE, "ofApp::setup");
 
 	int baud = 9600;
@@ -212,7 +212,7 @@ void ofApp::fadeVideoOLD(string direction, string videoTrigger){
 	// return;
 
 
-	cout << direction << " - " << fadeDownFilm << " - " << videoTrigger << " - " << videoLength << " - " << videoPosition << " - " << videoElapsedTime << " - " << fadeTime << " - " << fadeCallTime << " - " << "\n";
+	// cout << direction << " - " << fadeDownFilm << " - " << videoTrigger << " - " << videoLength << " - " << videoPosition << " - " << videoElapsedTime << " - " << fadeTime << " - " << fadeCallTime << " - " << "\n";
 
 	if ( fadeDownFilm == false ) {
 		cout << "IN THE IF" << "\n";
@@ -223,25 +223,25 @@ void ofApp::fadeVideoOLD(string direction, string videoTrigger){
 
 	float percentage = ( videoElapsedTime - fadeCallTime ) / fadeTime;
 
-	cout << direction << " - " << fadeDownFilm << " - " << videoTrigger << " - " << videoLength << " - " << videoPosition << " - " << videoElapsedTime << " - " << fadeTime << " - " << fadeCallTime << " - " << "\n";
+	// cout << direction << " - " << fadeDownFilm << " - " << videoTrigger << " - " << videoLength << " - " << videoPosition << " - " << videoElapsedTime << " - " << fadeTime << " - " << fadeCallTime << " - " << "\n";
 
 	// if ( videoTimeRemaining < fadeTime && fadeDownFilm ) {
 	if ( ( videoLength - videoElapsedTime ) > fadeTime && fadeDownFilm ) {
 
-		cout << "fadeVideo - if" << "\n";
+		// cout << "fadeVideo - if" << "\n";
 
 		while ( videoElapsedTime < fadeTime + fadeCallTime ) {
 
 			// cout << "fadeVideo - if while" << " - " << videoLength << " - " << ( movie.getPosition() * videoLength ) << " - " << movie.getPosition() << " - " << ( videoLength - ( movie.getPosition() * videoLength ) ) << " - "  << " - " << "\n";
 			if ( direction == "down" ) {
-				cout << "fadeVideo - if while down" << " - " << videoElapsedTime << " - " << fadeCallTime << " - " << ( fadeTime + fadeCallTime ) << " - " << videoPosition << " - " << static_cast<int>( 255 - ( 255 * percentage ) ) << " - " << percentage << " - " << "\n";
+				// cout << "fadeVideo - if while down" << " - " << videoElapsedTime << " - " << fadeCallTime << " - " << ( fadeTime + fadeCallTime ) << " - " << videoPosition << " - " << static_cast<int>( 255 - ( 255 * percentage ) ) << " - " << percentage << " - " << "\n";
 				// ofSetColor( 255, 255, 255, 255 * videoTimeRemaining / fadeTime ); // fade based on time left
 				// ofSetColor( 255, 255, 255, 255 - ( 255 * ( ( videoPosition * videoLength ) - fadeCallTime ) / fadeTime ) ); // fade based on time left
 				// ofSetColor( 255, 255, 255, (int)( 255 - ( 255 * percentage ) ) ); // fade based on time left
 				ofSetColor( 255, 255, 255, 50 ); // fade based on time left
 				// movie.draw(0, 0);
 			} else if ( direction == "up" ) {
-				cout << "fadeVideo - if while up" << " - " << videoElapsedTime << " - " << fadeCallTime << " - " << ( fadeTime + fadeCallTime ) << " - " << videoPosition << " - " << " - "  << " - " << "\n";
+				// cout << "fadeVideo - if while up" << " - " << videoElapsedTime << " - " << fadeCallTime << " - " << ( fadeTime + fadeCallTime ) << " - " << videoPosition << " - " << " - "  << " - " << "\n";
 				// ofSetColor( 255, 255, 255, 255 - ( 255 * videoTimeRemaining / fadeTime ) ); // fade based on time left
 				ofSetColor( 255, 255, 255, 255 * ( ( videoPosition * videoLength ) - fadeCallTime ) / fadeTime ); // fade based on time left
 			}
@@ -291,8 +291,8 @@ void ofApp::fadeVideoOLD(string direction, string videoTrigger){
 }
 
 void ofApp::sensorVideoSwitch(){
-	cout << "----------- \n";
-	cout << "SVS - SENSOR: " << sensorStatus << " - VECTOR: "<< mode << " - INDEX " << frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) << "\n";
+	// cout << "----------- \n";
+	// cout << "SVS - SENSOR: " << sensorStatus << " - VECTOR: "<< mode << " - INDEX " << frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) << "\n";
 	// cout << "VECTOR INDEX " << frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) << "\n";
 
 	if ( sensorStatus == "idle" ) {
