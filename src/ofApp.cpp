@@ -16,8 +16,8 @@ ofApp::~ofApp(){
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-		logger = new FrogLogger("ec2-52-53-209-107.us-west-1.compute.amazonaws.com",100);
-		logger->log("started app");
+	logger = new FrogLogger("ec2-52-53-209-107.us-west-1.compute.amazonaws.com",100);
+	logger->log("started app");
 
 	ofLog(OF_LOG_NOTICE, "ofApp::setup");
 
@@ -38,7 +38,7 @@ void ofApp::setup(){
 
 	//TODO - change the port to the arduino one
 	// from your terminal run: ll /dev/tty.*
-	serial.setup("/dev/tty.usbserial-AD026B1Q", baud); // live one
+	serial.setup("/dev/tty.usbserial-AK05C4C7", baud); // live one
 	// serial.setup("/dev/tty.usbserial-AK05C4C7", baud);
 	serial.flush();
 	cout << "SERIAL AVAILABLE?: " << serial.available() << "\n";
