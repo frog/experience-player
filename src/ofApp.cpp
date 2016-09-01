@@ -128,6 +128,7 @@ void ofApp::update(){
 		// if it is on mode 'engage' index 1
 		// move back to 'attract' index 0
 		if ( sensorStatus == "dwell" ) {
+
 			// cout << "SVS IF DWELL " << sensorStatus << "\n";
 			if ( frogUtils::getVectorValuePosition(this->Interaction_Mode, mode) == 0 ) {
 				cout << "GIMD 0 \n";
@@ -173,6 +174,7 @@ void ofApp::readArduinoSerial(){
 		// cout << "STRING: " << tmp <<"\n";
 		if ( idling >= 0 ) {
 			if ( sensorStatus != "idle" ) {
+	      logger->log("idle");
 				sensorStatusChange = true;
 				sensorStatus = "idle";
 			}
@@ -181,6 +183,7 @@ void ofApp::readArduinoSerial(){
 
 		if ( passing >= 0 ) {
 			if ( sensorStatus != "passing" ) {
+	      logger->log("passing");
 				sensorStatusChange = true;
 				sensorStatus = "passing";
 			}
@@ -189,6 +192,7 @@ void ofApp::readArduinoSerial(){
 
 		if ( dwelling >= 0 ) {
 			if ( sensorStatus != "dwell" ) {
+	      logger->log("dwelling");
 				sensorStatusChange = true;
 				sensorStatus = "dwell";
 			}
